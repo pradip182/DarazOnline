@@ -15,7 +15,6 @@ import com.example.darazonline.R;
 import com.example.darazonline.model.Products;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder> {
@@ -41,15 +40,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     @Override
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
         Products products=productsList.get(position);
-        holder.tvProductName.setText(products.getName());
-        holder.tvPrice.setText(products.getPrice());
+        holder.tvProductName_.setText(products.getProduct_name());
+        holder.tvPrice_.setText(products.getProduct_price());
         Picasso.get()
-                .load("http://www.piyushp.com.np/sport_fanatic/api/member/image/daraz_image/product/"+products.getImageId())
+                .load("http://www.piyushp.com.np/sport_fanatic/api/member/image/daraz_image/product/"+products.getProduct_image())
                 .placeholder(R.drawable.ic_launcher_background)
                 .resize(220, 220)
                 .centerCrop()
-                .into(holder.productImage);
-      //  holder.productImage.setImageResource(products.getImageId());
+                .into(holder.productImage_);
     }
 
     @Override
@@ -59,15 +57,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     public class ProductsViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView productImage;
-        TextView tvProductName,tvPrice;
+        ImageView productImage_;
+        TextView tvProductName_,tvPrice_;
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            productImage=itemView.findViewById(R.id.productImage);
-
-            tvProductName=itemView.findViewById(R.id.tvProductName);
-            tvPrice=itemView.findViewById(R.id.tvPrice);
+            productImage_=itemView.findViewById(R.id.productImage);
+            tvProductName_=itemView.findViewById(R.id.tvProductName);
+            tvPrice_=itemView.findViewById(R.id.tvPrice);
 
         }
     }
